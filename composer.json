@@ -1,0 +1,33 @@
+{
+  "name": "editions-tissot/php-cs-fixer-config",
+  "description": "PHP CS Fixer config",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Rémy BRUYERE",
+      "email": "me@remy.ovh",
+      "homepage": "https://remy.ovh/"
+    }
+  ],
+  "require": {
+    "php": "^7.4|^8.0",
+    "friendsofphp/php-cs-fixer": "^3.0"
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^1.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "EditionsTissot\\CS\\Config\\": "src"
+    }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "scripts": {
+    "static-analysis": "./vendor/bin/phpstan analyse src --level=max --no-progress",
+    "code-style-check": "./vendor/bin/php-cs-fixer fix --dry-run --verbose --using-cache=no",
+    "code-style-fix": "./vendor/bin/php-cs-fixer fix --using-cache=no"
+  }
+}
