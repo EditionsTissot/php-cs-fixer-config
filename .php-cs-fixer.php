@@ -1,9 +1,10 @@
 <?php
 
-$config = new EditionsTissot\CS\Config\Config;
+$config = new EditionsTissot\CS\Config\Config();
 $config->getFinder()
     ->in([
-       __DIR__.'/src'
-    ]);
+        __DIR__ . '/src',
+    ])
+;
 
 return $config;
