@@ -1,22 +1,52 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace EditionsTissot\CS\Config;
 
 use PhpCsFixer\Config as BaseConfig;
+use PhpCsFixerCustomFixers as CustomFixers;
 
 class Config extends BaseConfig
 {
-    protected int $phpVersion = 74;
+    /** @var array<string, bool|mixed> */
+    protected array $rules = [];
+    protected int $phpVersion;
+    protected bool $customFixers;
 
-    public function __construct()
-    {
+    public function __construct(
+        int $phpVersion = 74,
+        bool $customFixers = false
+    ) {
         parent::__construct('EditionsTissot PHP >= 7.4 config');
+        $this->phpVersion = $phpVersion;
+        $this->customFixers = $customFixers;
+        $this->registerCustomFixers(new CustomFixers\Fixers());
     }
 
     /**
      * @return array<string, bool|mixed>
      */
     public function getRules(): array
+    {
+        return array_merge(
+            $this->addDefaultRules(),
+            $this->customFixers ? $this->addCustomRules() : [],
+            $this->rules,
+        );
+    }
+
+    /**
+     * @param array<string, bool|mixed> $rules
+     */
+    public function addMoreRules(array $rules = []): self
+    {
+        $this->rules = array_merge($this->rules, $rules);
+        return $this;
+    }
+
+    /**
+     * @return array<string, bool|mixed>
+     */
+    public function addDefaultRules(): array
     {
         $rules = [
             '@DoctrineAnnotation' => true,
@@ -72,10 +102,24 @@ class Config extends BaseConfig
         return $rules;
     }
 
-    public function setPhpVersion(int $phpVersion): self
+    /**
+     * @return array<string, bool>
+     */
+    protected function addCustomRules(): array
     {
-        $this->phpVersion = $phpVersion;
-
-        return $this;
+        return [
+            CustomFixers\Fixer\CommentSurroundedBySpacesFixer::name() => true,
+            CustomFixers\Fixer\ConstructorEmptyBracesFixer::name() => true,
+            CustomFixers\Fixer\DeclareAfterOpeningTagFixer::name() => true,
+            CustomFixers\Fixer\MultilinePromotedPropertiesFixer::name() => true,
+            CustomFixers\Fixer\NoDoctrineMigrationsGeneratedCommentFixer::name() => true,
+            CustomFixers\Fixer\NoUselessDoctrineRepositoryCommentFixer::name() => true,
+            CustomFixers\Fixer\NoUselessStrlenFixer::name() => true,
+            CustomFixers\Fixer\PhpdocArrayStyleFixer::name() => true,
+            CustomFixers\Fixer\PhpdocParamOrderFixer::name() => true,
+            CustomFixers\Fixer\PhpdocSelfAccessorFixer::name() => true,
+            CustomFixers\Fixer\PhpdocTypesCommaSpacesFixer::name() => true,
+            CustomFixers\Fixer\StringableInterfaceFixer::name() => true,
+        ];
     }
 }
