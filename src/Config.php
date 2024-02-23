@@ -67,7 +67,6 @@ class Config extends BaseConfig
                     'try',
                 ],
             ],
-            'braces' => ['allow_single_line_closure' => true],
             'concat_space' => ['spacing' => 'one'],
             'no_superfluous_phpdoc_tags' => true,
             'phpdoc_line_span' => [
@@ -87,6 +86,14 @@ class Config extends BaseConfig
 
         if ($this->phpVersion >= 81) {
             $rules['@PHP81Migration'] = true;
+        }
+
+        if ($this->phpVersion >= 82) {
+            $rules['@PHP82Migration'] = true;
+        }
+
+        if ($this->phpVersion >= 83) {
+            $rules['@PHP83Migration'] = true;
         }
 
         if ($this->getRiskyAllowed()) {
@@ -120,7 +127,6 @@ class Config extends BaseConfig
             CustomFixers\Fixer\NoUselessDoctrineRepositoryCommentFixer::name() => true,
             CustomFixers\Fixer\NoUselessStrlenFixer::name() => true,
             CustomFixers\Fixer\PhpdocArrayStyleFixer::name() => true,
-            CustomFixers\Fixer\PhpdocNoIncorrectVarAnnotationFixer::name() => true,
             CustomFixers\Fixer\PhpdocNoSuperfluousParamFixer::name() => true,
             CustomFixers\Fixer\PhpdocSelfAccessorFixer::name() => true,
             CustomFixers\Fixer\PhpdocSingleLineVarFixer::name() => true,

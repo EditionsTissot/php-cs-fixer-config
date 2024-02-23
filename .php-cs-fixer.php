@@ -1,6 +1,6 @@
 <?php
 
-$config = new EditionsTissot\CS\Config\Config(81, true);
+$config = new EditionsTissot\CS\Config\Config(83, true);
 $config
     ->addMoreRules([
         'declare_strict_types' => true,
