@@ -56,6 +56,7 @@ class Config extends BaseConfig
             '@Symfony' => true,
             'array_indentation' => true,
             'align_multiline_comment' => true,
+            'blank_line_after_opening_tag' => true,
             'blank_line_before_statement' => [
                 'statements' => [
                     'declare',
@@ -69,6 +70,7 @@ class Config extends BaseConfig
             ],
             'concat_space' => ['spacing' => 'one'],
             'no_superfluous_phpdoc_tags' => true,
+            'phpdoc_array_type' => true,
             'phpdoc_line_span' => [
                 'property' => 'single',
                 'const' => 'single',
@@ -126,7 +128,6 @@ class Config extends BaseConfig
             CustomFixers\Fixer\NoUselessDirnameCallFixer::name() => true,
             CustomFixers\Fixer\NoUselessDoctrineRepositoryCommentFixer::name() => true,
             CustomFixers\Fixer\NoUselessStrlenFixer::name() => true,
-            CustomFixers\Fixer\PhpdocArrayStyleFixer::name() => true,
             CustomFixers\Fixer\PhpdocNoSuperfluousParamFixer::name() => true,
             CustomFixers\Fixer\PhpdocSelfAccessorFixer::name() => true,
             CustomFixers\Fixer\PhpdocSingleLineVarFixer::name() => true,
