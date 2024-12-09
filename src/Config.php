@@ -91,6 +91,7 @@ class Config extends BaseConfig
             ],
 
             'single_line_empty_body' => true,
+            'concat_space' => ['spacing' => 'one'],
         ];
 
         if ($this->phpVersion >= 81) {
