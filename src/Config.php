@@ -13,10 +13,10 @@ class Config extends BaseConfig
     protected bool $customFixers;
 
     public function __construct(
-        int $phpVersion = 74,
+        int $phpVersion = 82,
         bool $customFixers = false
     ) {
-        parent::__construct('EditionsTissot PHP >= 7.4 config');
+        parent::__construct('EditionsTissot PHP >= 8.2 config');
         $this->phpVersion = $phpVersion;
         $this->customFixers = $customFixers;
         $this->registerCustomFixers(new CustomFixers\Fixers());
@@ -50,7 +50,7 @@ class Config extends BaseConfig
     {
         $rules = [
             '@DoctrineAnnotation' => true,
-            '@PHP81Migration' => true,
+            '@PHP82Migration' => true,
             '@PhpCsFixer' => true,
             '@PSR12' => true,
             '@Symfony' => true,
