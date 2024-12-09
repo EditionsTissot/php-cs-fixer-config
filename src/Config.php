@@ -56,7 +56,6 @@ class Config extends BaseConfig
             '@Symfony' => true,
             'array_indentation' => true,
             'align_multiline_comment' => true,
-            'blank_line_after_opening_tag' => true,
             'blank_line_before_statement' => [
                 'statements' => [
                     'declare',
@@ -120,7 +119,6 @@ class Config extends BaseConfig
         return [
             CustomFixers\Fixer\CommentSurroundedBySpacesFixer::name() => true,
             CustomFixers\Fixer\ConstructorEmptyBracesFixer::name() => true,
-            CustomFixers\Fixer\DeclareAfterOpeningTagFixer::name() => true,
             CustomFixers\Fixer\MultilinePromotedPropertiesFixer::name() => true,
             CustomFixers\Fixer\NoDoctrineMigrationsGeneratedCommentFixer::name() => true,
             CustomFixers\Fixer\NoImportFromGlobalNamespaceFixer::name() => true,
