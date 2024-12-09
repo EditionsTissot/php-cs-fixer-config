@@ -81,14 +81,6 @@ class Config extends BaseConfig
             'yoda_style' => true,
         ];
 
-        if ($this->phpVersion >= 80) {
-            $rules['@PHP80Migration'] = true;
-        }
-
-        if ($this->phpVersion >= 81) {
-            $rules['@PHP81Migration'] = true;
-        }
-
         if ($this->phpVersion >= 82) {
             $rules['@PHP82Migration'] = true;
         }
