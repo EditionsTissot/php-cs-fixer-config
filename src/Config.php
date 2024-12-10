@@ -90,6 +90,17 @@ class Config extends BaseConfig
                 ],
             ],
 
+            'trailing_comma_in_multiline' => [
+                'after_heredoc' => true,
+                'elements' => [
+                    'arguments',
+                    'array_destructuring',
+                    'arrays',
+                    'match',
+                    'parameters',
+                ],
+            ],
+
             'single_line_empty_body' => true,
             'concat_space' => ['spacing' => 'one'],
         ];
