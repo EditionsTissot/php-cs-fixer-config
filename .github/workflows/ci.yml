@@ -18,6 +18,8 @@ jobs:
             php-version: '8.2'
           - operating-system: 'ubuntu-latest'
             php-version: '8.3'
+          - operating-system: 'ubuntu-latest'
+            php-version: '8.4'
 
     name: PHP ${{ matrix.php-version }}
 
@@ -25,7 +27,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -41,7 +43,7 @@ jobs:
         run: echo "::set-output name=dir::$(composer config cache-dir)"
 
       - name: Cache dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: composer-${{ runner.os }}-${{ matrix.php-version }}-${{ hashFiles('**/composer.*') }}-${{ matrix.composer-flags }}

@@ -51,8 +51,8 @@ class Config extends BaseConfig
     {
         $rules = [
             '@DoctrineAnnotation' => true,
-            '@PER-CS2.0' => true,
-            '@PHP80Migration' => true,
+            '@PER-CS2x0' => true,
+            '@PHP8x0Migration' => true,
             '@PSR12' => true,
             '@PhpCsFixer' => true,
             '@Symfony' => true,
@@ -103,18 +103,23 @@ class Config extends BaseConfig
 
             'single_line_empty_body' => true,
             'concat_space' => ['spacing' => 'one'],
+            'multiline_promoted_properties' => true,
         ];
 
         if ($this->phpVersion >= 81) {
-            $rules['@PHP81Migration'] = true;
+            $rules['@PHP8x1Migration'] = true;
         }
 
         if ($this->phpVersion >= 82) {
-            $rules['@PHP82Migration'] = true;
+            $rules['@PHP8x2Migration'] = true;
         }
 
         if ($this->phpVersion >= 83) {
-            $rules['@PHP83Migration'] = true;
+            $rules['@PHP8x3Migration'] = true;
+        }
+
+        if ($this->phpVersion >= 84) {
+            $rules['@PHP8x4Migration'] = true;
         }
 
         return $rules;
@@ -130,8 +135,8 @@ class Config extends BaseConfig
         }
 
         $rules = [
-            '@PER-CS2.0:risky' => true,
-            '@PHP80Migration:risky' => true,
+            '@PER-CS2x0:risky' => true,
+            '@PHP8x0Migration:risky' => true,
             '@PSR12:risky' => true,
             '@PhpCsFixer:risky' => true,
             '@Symfony:risky' => true,
@@ -141,7 +146,15 @@ class Config extends BaseConfig
         ];
 
         if ($this->phpVersion >= 82) {
-            $rules['@PHP82Migration:risky'] = true;
+            $rules['@PHP8x2Migration:risky'] = true;
+        }
+
+        if ($this->phpVersion >= 83) {
+            $rules['@PHP8x3Migration:risky'] = true;
+        }
+
+        if ($this->phpVersion >= 84) {
+            $rules['@PHP8x4Migration:risky'] = true;
         }
 
         return $rules;
@@ -159,7 +172,6 @@ class Config extends BaseConfig
         return [
             CustomFixers\Fixer\CommentSurroundedBySpacesFixer::name() => true,
             CustomFixers\Fixer\MultilineCommentOpeningClosingAloneFixer::name() => true,
-            CustomFixers\Fixer\MultilinePromotedPropertiesFixer::name() => true,
             CustomFixers\Fixer\NoDoctrineMigrationsGeneratedCommentFixer::name() => true,
             CustomFixers\Fixer\NoDuplicatedArrayKeyFixer::name() => true,
             CustomFixers\Fixer\NoDuplicatedImportsFixer::name() => true,

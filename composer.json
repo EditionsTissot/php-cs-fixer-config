@@ -12,11 +12,11 @@
   ],
   "require": {
     "php": ">=8.0",
-    "friendsofphp/php-cs-fixer": "^3.65",
-    "kubawerlos/php-cs-fixer-custom-fixers": "^3.22"
+    "friendsofphp/php-cs-fixer": "^3.94",
+    "kubawerlos/php-cs-fixer-custom-fixers": "^3.36"
   },
   "require-dev": {
-    "phpstan/phpstan": "^1.12"
+    "phpstan/phpstan": "^2.1"
   },
   "autoload": {
     "psr-4": {
@@ -25,10 +25,5 @@
   },
   "config": {
     "sort-packages": true
-  },
-  "scripts": {
-    "static-analysis": "./vendor/bin/phpstan analyse src --level=max --no-progress",
-    "code-style-check": "./vendor/bin/php-cs-fixer fix --dry-run --verbose --using-cache=no",
-    "code-style-fix": "./vendor/bin/php-cs-fixer fix --using-cache=no"
   }
 }
