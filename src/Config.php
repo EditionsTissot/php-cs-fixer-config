@@ -117,6 +117,10 @@ class Config extends BaseConfig
             $rules['@PHP83Migration'] = true;
         }
 
+        if ($this->phpVersion >= 84) {
+            $rules['@PHP84Migration'] = true;
+        }
+
         return $rules;
     }
 
@@ -130,7 +134,7 @@ class Config extends BaseConfig
         }
 
         $rules = [
-            '@PER-CS2.0:risky' => true,
+            '@PER-CS2x0:risky' => true,
             '@PHP80Migration:risky' => true,
             '@PSR12:risky' => true,
             '@PhpCsFixer:risky' => true,
